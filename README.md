@@ -1,16 +1,34 @@
-# cranium-esp32-cluster
-A project for creating small pseudo-clusters of esp32 mcu, particularly using M5-stack esp32-core and Atom lites.
+# CRANIUM
 
-This is nothing more than an experiment involving cheap hardware and how far can it be pushed.
+## Distributed ESP32 Computing Cluster
 
-Warning: This project has been developed under the heavy use of free tier AI. 
+Cranium is an experimental distributed-computing platform built around an M5Stack ESP32 coordinator and a network of M5Stack Atom Lite nodes.
 
-The Hardware:
+The goal is to create a small, inexpensive, modular computing cluster in which individual ESP32 devices cooperate over a local WiFi network while a separate management bus provides reliable low-level control and recovery.
 
-1 M5stack esp32-core
-6 M5stack Atom lite
-1 PA-hub 
-assorted cables
+> **One brain. Multiple nodes. Distributed computation.**
 
-The software:
-The pseudo-cluster uses a wired and wireless communication methods. The wired portion acts as a control interface between the nodes and coordinator. The  wireless acts as the means to send data to the nodes. The software currently supports a limited number of commands reboot, reset wireless and certain states of the nodes such as free ram and storage etc. 
+---
+
+## Overview
+
+Cranium separates the cluster into two communication planes:
+
+```text
+                         CRANIUM
+                    +---------------+
+                    |  COORDINATOR  |
+                    | M5Stack ESP32 |
+                    +-------+-------+
+                            |
+              +-------------+-------------+
+              |                           |
+        MANAGEMENT PLANE             DATA PLANE
+             I2C                        WiFi
+              |                           |
+           PA-HUB                  Cluster Network
+              |                           |
+      +-------+-------+           +-------+-------+
+      |       |       |           |       |       |
+     Atom    Atom    Atom        Atom    Atom    Atom
+      0       1       2           3       4       5
