@@ -4,3 +4,13 @@ A project for creating small pseudo-clusters of esp32 mcu, particularly using M5
 This is nothing more than an experiment involving cheap hardware and how far can it be pushed.
 
 Warning: This project has been developed under the heavy use of free tier AI. 
+
+The Hardware:
+
+1 M5stack esp32-core
+6 M5stack Atom lite
+1 PA-hub 
+assorted cables
+
+The software:
+The pseudo-cluster
