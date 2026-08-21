@@ -13,4 +13,4 @@ The Hardware:
 assorted cables
 
 The software:
-The pseudo-cluster
+The pseudo-cluster uses a wired and wireless communication methods. The wired portion acts as a control interface between the nodes and coordinator. The  wireless acts as the means to send data to the nodes. The software currently supports a limited number of commands reboot, reset wireless and certain states of the nodes such as free ram and storage etc. 
